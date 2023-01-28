@@ -15,19 +15,23 @@ bool isPrime(int n)
 
 int main()
 {
+    //Access outfile
     std::ofstream outf{ "primes.txt" };
     
+    //Contingency error
     if (!outf)
     {
         std::cerr << "Uh oh, Sample.txt could not be opened for writing!\n";
         return 1;
     }
     
+    //establish count, sum, and list of highest primes
     int primeCount = 0;
     int primeSum = 0;
     int primeList[10];
     for (int n = 2; i <= 1000; i++)
     {
+        //check if prime
         bool primeness = isPrime(n);
         if(primeness)
         {
@@ -37,6 +41,7 @@ int main()
         }
     }
     
+    //output to file
     outf << primeCount << "  " << primeSum << "\n";
     for (int k = 1; k <= 10; k++)
     {
