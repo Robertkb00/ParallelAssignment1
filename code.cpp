@@ -15,6 +15,14 @@ bool isPrime(int n)
 
 int main()
 {
+    std::ofstream outf{ "primes.txt" };
+    
+    if (!outf)
+    {
+        std::cerr << "Uh oh, Sample.txt could not be opened for writing!\n";
+        return 1;
+    }
+    
     int primeCount = 0;
     int primeSum = 0;
     int primeList[10];
@@ -25,8 +33,18 @@ int main()
         {
             primeList[n%10] = n;
             primeSum += n;
-            primecount++;
+            primeCount++;
         }
+    }
+    
+    outf << primeCount << "  " << primeSum << "\n";
+    for (int k = 1; k <= 10; k++)
+    {
+        primeMax = (primeCount-1)%10;
+        outf << primeList[primeMax] << " ";
+        primeMax++;
+        if(primeMax > 9)
+            primeMax = 0;
     }
     return 0;
 }
